@@ -247,6 +247,16 @@
       </div>
 
       <div class="field">
+        <label>Form Filled in By</label>
+        <input type="text" name="form_filled_by" placeholder="Name">
+      </div>
+
+      <div class="field">
+        <label>Collar Deployed By</label>
+        <input type="text" name="collar_deployed_by" placeholder="Name">
+      </div>
+
+      <div class="field">
         <label>Badger DAFM ID</label>
         <input type="text" name="badger_id" placeholder="DAFM badger reference">
       </div>
@@ -323,6 +333,8 @@
     { key: 'magnet_removed',  label: 'Magnet Removed' },
     { key: 'county',          label: 'County' },
     { key: 'sett_id',         label: 'Sett DAFM ID' },
+    { key: 'form_filled_by',  label: 'Form Filled in By' },
+    { key: 'collar_deployed_by', label: 'Collar Deployed By' },
     { key: 'badger_id',       label: 'Badger DAFM ID' },
     { key: 'collar_fit',      label: 'Collar Fit' },
     { key: 'notes',           label: 'Notes' },
@@ -351,13 +363,6 @@
     record._saved = new Date().toISOString();
     existing.push(record);
     localStorage.setItem('badger_records', JSON.stringify(existing));
-
-    // Set title to collar ID so print dialog uses it as filename
-    var collarId = record.collar_id || 'UCD-Badger-Record';
-    var prevTitle = document.title;
-    document.title = collarId;
-    window.print();
-    document.title = prevTitle;
 
     document.getElementById('successBanner').classList.add('visible');
     setTimeout(() => document.getElementById('successBanner').classList.remove('visible'), 4000);
