@@ -418,9 +418,16 @@
     var records = getRecords();
     if (!records.length) { alert('No records to export.'); return; }
     var headers = FIELDS.map(function(f) { return f.label; }).concat(['Saved At']);
+    // ID fields are wrapped as ="value" so Excel keeps them as text
+    // (no scientific notation, no lost digits, no dropped leading zeros)
+    var TEXT_FIELDS = ['badger_id', 'sett_id', 'collar_id'];
     var rows = records.map(function(r) {
       return FIELDS.map(function(f) {
-        return '"' + (r[f.key] || '').replace(/"/g, '""') + '"';
+        var v = String(r[f.key] || '').replace(/"/g, '""');
+        if (v && TEXT_FIELDS.indexOf(f.key) !== -1) {
+          return '"=""' + v.replace(/""/g, '""""') + '"""';
+        }
+        return '"' + v + '"';
       }).concat(['"' + (r._saved || '') + '"']).join(',');
     });
     var csv = [headers.join(',')].concat(rows).join('\n');
