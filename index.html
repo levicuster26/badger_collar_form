@@ -204,7 +204,11 @@
 
       <div class="field">
         <label>Trapping Method</label>
-        <input type="text" name="trapping_method" placeholder="e.g. cage trap, snare…">
+        <select name="trapping_method">
+          <option value="">Select method…</option>
+          <option>Restraint</option>
+          <option>Cage trap</option>
+        </select>
       </div>
 
     </div>
@@ -232,15 +236,11 @@
         <label>County</label>
         <select name="county">
           <option value="">Select county…</option>
-          <option>Carlow</option><option>Cavan</option><option>Clare</option>
-          <option>Cork</option><option>Donegal</option><option>Dublin</option>
-          <option>Galway</option><option>Kerry</option><option>Kildare</option>
-          <option>Kilkenny</option><option>Laois</option><option>Leitrim</option>
-          <option>Limerick</option><option>Longford</option><option>Louth</option>
-          <option>Mayo</option><option>Meath</option><option>Monaghan</option>
-          <option>Offaly</option><option>Roscommon</option><option>Sligo</option>
-          <option>Tipperary</option><option>Waterford</option><option>Westmeath</option>
-          <option>Wexford</option><option>Wicklow</option>
+          <option>Cork</option>
+          <option>Donegal</option>
+          <option>Kilkenny</option>
+          <option>Meath</option>
+          <option>Monaghan</option>
         </select>
       </div>
 
@@ -285,10 +285,10 @@
       <div class="field">
         <label>Collar Fit Assessment</label>
         <div class="toggle-group">
-          <input type="radio" name="collar_fit" id="fit_good" value="Good — cannot be removed">
+          <input type="radio" name="collar_fit" id="fit_good" value="Good fit">
           <label for="fit_good">✓ Good fit</label>
-          <input type="radio" name="collar_fit" id="fit_unsuitable" value="Unsuitable — removed over head">
-          <label for="fit_unsuitable">✗ Not suitable</label>
+          <input type="radio" name="collar_fit" id="fit_unsuitable" value="Not good fit">
+          <label for="fit_unsuitable">✗ Not good fit</label>
         </div>
       </div>
     </div>
